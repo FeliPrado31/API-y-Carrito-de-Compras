@@ -1,3 +1,4 @@
+
 'use client'
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -30,7 +31,7 @@ const ProductList = () => {
                         </CardContent>
                         <CardFooter>
                             <Button
-                                onClick={() => handleAddToCart(product.id)} // Llama a handleAddToCart con el ID del producto
+                                onClick={() => handleAddToCart(product.id)} 
                                 className="w-full"
                             >
                                 Agregar al carrito

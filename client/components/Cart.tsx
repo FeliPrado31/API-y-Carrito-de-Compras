@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
@@ -5,6 +6,7 @@ import { ErrorAlert } from '@/components/ErrorAlert';
 
 const Cart = () => {
     const { cartItems, fetchCart, loading, error } = useCart();
+
 
     useEffect(() => {
         fetchCart();

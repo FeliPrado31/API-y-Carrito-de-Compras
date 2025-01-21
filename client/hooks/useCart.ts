@@ -1,3 +1,4 @@
+
 import { useState, useCallback } from "react";
 import api from "@/lib/api";
 import { Product } from "@/app/types/product";
@@ -23,14 +24,13 @@ export const useCart = () => {
     setLoading(true);
     try {
       await api.post("/cart", { productId });
-      const updatedCart = await api.get<Product[]>("/cart");
-      setCartItems(updatedCart.data);
+      await fetchCart();
     } catch (error) {
       setError("Error adding product to cart");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [fetchCart]);
 
   return { cartItems, addToCart, fetchCart, loading, error };
 };
