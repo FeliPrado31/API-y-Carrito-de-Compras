@@ -20,12 +20,12 @@ app.use(
     })
 );
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(bodyParser.json());
 
-app.use('/products', productsRouter);
-app.use('/cart', cartRouter);
+app.use('/api/products', productsRouter);
+app.use('/api/cart', cartRouter);
 
 app.use(errorHandler);
 
