@@ -2,10 +2,10 @@
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {useProducts} from "@/hooks/useProducts";
-import {useCart} from "@/hooks/useCart";
-import {LoadingSpinner} from "@/components/LoadingSpinner";
-import {ErrorAlert} from "@/components/ErrorAlert";
+import { useProducts } from "@/hooks/useProducts";
+import { useCart } from "@/hooks/useCart";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
+import { ErrorAlert } from "@/components/ErrorAlert";
 
 const ProductList = () => {
     const { products, loading, error } = useProducts();
@@ -13,7 +13,6 @@ const ProductList = () => {
 
     const handleAddToCart = async (productId: number) => {
         await addToCart(productId);
-
     };
 
     if (loading) return <LoadingSpinner />;
@@ -31,7 +30,7 @@ const ProductList = () => {
                         </CardContent>
                         <CardFooter>
                             <Button
-                                onClick={() => handleAddToCart(product.id)}
+                                onClick={() => handleAddToCart(product.id)} // Llama a handleAddToCart con el ID del producto
                                 className="w-full"
                             >
                                 Agregar al carrito

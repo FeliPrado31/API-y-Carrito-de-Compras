@@ -19,7 +19,7 @@ export const useCart = () => {
     }
   }, []);
 
-  const addToCart = async (productId: number) => {
+  const addToCart = useCallback(async (productId: number) => {
     setLoading(true);
     try {
       await api.post("/cart", { productId });
@@ -29,7 +29,7 @@ export const useCart = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [fetchCart]);
 
   return { cartItems, addToCart, fetchCart, loading, error };
 };

@@ -1,6 +1,4 @@
-'use client';
-
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { ErrorAlert } from '@/components/ErrorAlert';
@@ -8,12 +6,14 @@ import { ErrorAlert } from '@/components/ErrorAlert';
 const Cart = () => {
     const { cartItems, fetchCart, loading, error } = useCart();
 
-    // Llama a fetchCart cuando el componente se monta
-    useEffect(() => {
+    
+    const memoizedFetchCart = useCallback(() => {
         fetchCart();
     }, [fetchCart]);
 
-    console.log("Cart items:", cartItems); // Depura los elementos del carrito
+    useEffect(() => {
+        memoizedFetchCart();
+    }, [memoizedFetchCart]);
 
     if (loading) return <LoadingSpinner />;
     if (error) return <ErrorAlert message={error} />;
@@ -27,7 +27,7 @@ const Cart = () => {
                 <ul className="space-y-2">
                     {cartItems.map((item, index) => (
                         <li
-                            key={`${item.id}-${index}`} // Combina el ID con el índice
+                            key={`${item.id}-${index}`}
                             className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
                         >
                             <span className="font-medium">{item.name}</span>
