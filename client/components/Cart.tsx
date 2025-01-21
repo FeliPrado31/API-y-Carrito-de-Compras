@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { ErrorAlert } from '@/components/ErrorAlert';
@@ -6,14 +6,9 @@ import { ErrorAlert } from '@/components/ErrorAlert';
 const Cart = () => {
     const { cartItems, fetchCart, loading, error } = useCart();
 
-    
-    const memoizedFetchCart = useCallback(() => {
+    useEffect(() => {
         fetchCart();
     }, [fetchCart]);
-
-    useEffect(() => {
-        memoizedFetchCart();
-    }, [memoizedFetchCart]);
 
     if (loading) return <LoadingSpinner />;
     if (error) return <ErrorAlert message={error} />;

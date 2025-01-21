@@ -23,13 +23,14 @@ export const useCart = () => {
     setLoading(true);
     try {
       await api.post("/cart", { productId });
-      await fetchCart(); // Vuelve a obtener el carrito actualizado
+      const updatedCart = await api.get<Product[]>("/cart");
+      setCartItems(updatedCart.data);
     } catch (error) {
       setError("Error adding product to cart");
     } finally {
       setLoading(false);
     }
-  }, [fetchCart]);
+  }, []);
 
   return { cartItems, addToCart, fetchCart, loading, error };
 };
