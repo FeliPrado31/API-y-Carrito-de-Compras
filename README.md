@@ -12,9 +12,14 @@ El proyecto está dividido en dos partes principales:
 ### 🌍 Live Demo
 
 [🖌️ Frontend](https://api-y-carrito-de-compras.vercel.app/)
+```
+https://api-y-carrito-de-compras.vercel.app/
+```
 
 [🖥️ Backend](https://api-y-carrito-de-compras-bakj.vercel.app/api/products) 
-
+```
+https://api-y-carrito-de-compras-bakj.vercel.app/api/products
+```
 
 ### 📂 Estructura de Directorios
 
@@ -106,7 +111,7 @@ El proyecto está dividido en dos partes principales:
 La API está documentada con Swagger. Puedes acceder a la documentación en:
 
 ```
-http://localhost:3001/api-docs
+http://localhost:3001/api/docs/
 ```
 
 ## 🧪 Pruebas

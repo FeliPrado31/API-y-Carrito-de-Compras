@@ -42,7 +42,7 @@ Este es el backend del proyecto **API y Carrito de Compras**, desarrollado con *
 La API está documentada con Swagger. Puedes acceder a la documentación en:
 
 ```
-http://localhost:3001/api-docs
+http://localhost:3001/api/docs/
 ```
 
 ## 🧪 Pruebas
