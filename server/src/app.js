@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
 const errorHandler = require('./middlewares/errorHandler');
+require('dotenv').config()
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
