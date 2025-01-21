@@ -11,7 +11,7 @@ El proyecto está dividido en dos partes principales:
 
 ### 🌍 Live Demo
 
-
+https://api-y-carrito-de-compras.vercel.app/
 
 ### 📂 Estructura de Directorios
 
@@ -45,12 +45,14 @@ El proyecto está dividido en dos partes principales:
 ## 📦 Instalación
 
 1. Clona el repositorio:
+
    ```bash
    git clone https://github.com/FeliPrado31/API-y-Carrito-de-Compras.git
    cd API-y-Carrito-de-Compras
    ```
 
 2. Instala las dependencias del servidor:
+
    ```bash
    cd server
    npm install
@@ -65,12 +67,15 @@ El proyecto está dividido en dos partes principales:
 ## 🚀 Ejecución
 
 ### Servidor (Backend)
+
 1. Navega a la carpeta `server`:
+
    ```bash
    cd server
    ```
 
 2. Inicia el servidor:
+
    ```bash
    npm run dev
    ```
@@ -78,12 +83,15 @@ El proyecto está dividido en dos partes principales:
    El servidor estará disponible en `http://localhost:3001`.
 
 ### Cliente (Frontend)
+
 1. Navega a la carpeta `client`:
+
    ```bash
    cd client
    ```
 
 2. Inicia la aplicación:
+
    ```bash
    npm run dev
    ```
@@ -103,6 +111,7 @@ http://localhost:3001/api-docs
 Para ejecutar las pruebas unitarias y de integración:
 
 1. En el servidor:
+
    ```bash
    cd server
    npm test
@@ -119,5 +128,3 @@ Para ejecutar las pruebas unitarias y de integración:
 - **Gestión de Productos**: Obtén la lista de productos disponibles.
 - **Carrito de Compras**: Añade productos al carrito y gestiona tu compra.
 - **Optimización de Presupuesto**: Encuentra la mejor combinación de productos según tu presupuesto.
-
-
