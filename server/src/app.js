@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
 const errorHandler = require('./middlewares/errorHandler');
+const logger = require('./config/logger');
+
 require('dotenv').config()
 
 const app = express();
@@ -19,6 +21,6 @@ module.exports = app;
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
+        logger.info(`Server running on http://localhost:${PORT}`);
     });
 }

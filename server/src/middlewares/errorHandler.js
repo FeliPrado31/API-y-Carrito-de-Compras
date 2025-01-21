@@ -1,7 +1,8 @@
 const { STATUS_CODES } = require('../config/constants');
+const logger = require('../config/logger');
 
 const errorHandler = (err, req, res, next) => {
-    console.error(err.stack);
+    logger.error(err.stack);
 
     if (err.message === 'Product not found') {
         return res.status(STATUS_CODES.NOT_FOUND).json({ error: err.message });
