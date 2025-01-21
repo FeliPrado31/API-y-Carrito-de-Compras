@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useCallback } from "react";
 import api from "@/lib/api";
 import { Product } from "@/app/types/product";
@@ -16,6 +18,7 @@ export const useCart = () => {
     } catch (error) {
       setError("Error fetching cart");
       toast.error("Error fetching cart");
+      console.error(error)
     } finally {
       setLoading(false);
     }
@@ -28,6 +31,8 @@ export const useCart = () => {
       await fetchCart();
     } catch (error) {
       setError("Error adding product to cart");
+      toast.error("Error adding product to cart");
+      console.error(error)
     } finally {
       setLoading(false);
     }
