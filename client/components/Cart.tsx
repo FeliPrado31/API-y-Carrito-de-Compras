@@ -1,32 +1,22 @@
-'use client'
+'use client';
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import {Product} from "@/app/types/product";
+import { useEffect } from 'react';
+import { useCart } from '@/hooks/useCart';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { ErrorAlert } from '@/components/ErrorAlert';
 
-const Cart: React.FC = () => {
-    const [cartItems, setCartItems] = useState<Product[]>([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
+const Cart = () => {
+    const { cartItems, fetchCart, loading, error } = useCart();
 
+    // Llama a fetchCart cuando el componente se monta
     useEffect(() => {
-        const fetchCart = async () => {
-            try {
-                const response = await axios.get<Product[]>("http://localhost:3001/cart")
-                setCartItems(response.data)
-                setIsLoading(false)
-            } catch (err) {
-                setError("Error al cargar el carrito")
-                setIsLoading(false)
-            }
-        }
+        fetchCart();
+    }, [fetchCart]);
 
-        fetchCart()
-    }, [])
+    console.log("Cart items:", cartItems); // Depura los elementos del carrito
 
-    if (isLoading) return <div className="text-center">Cargando carrito...</div>
-    if (error) return <div className="text-center text-red-500">{error}</div>
+    if (loading) return <LoadingSpinner />;
+    if (error) return <ErrorAlert message={error} />;
 
     return (
         <div className="border border-gray-200 rounded-lg p-4 shadow-sm">
@@ -35,9 +25,9 @@ const Cart: React.FC = () => {
                 <p className="text-gray-500">El carrito está vacío</p>
             ) : (
                 <ul className="space-y-2">
-                    {cartItems.map((item) => (
+                    {cartItems.map((item, index) => (
                         <li
-                            key={item.id}
+                            key={`${item.id}-${index}`} // Combina el ID con el índice
                             className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
                         >
                             <span className="font-medium">{item.name}</span>
@@ -46,16 +36,8 @@ const Cart: React.FC = () => {
                     ))}
                 </ul>
             )}
-            {cartItems.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                    <p className="font-bold text-right">
-                        Total: ${cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
-                    </p>
-                </div>
-            )}
         </div>
-    )
-}
+    );
+};
 
-export default Cart
-
+export default Cart;

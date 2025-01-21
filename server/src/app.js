@@ -10,6 +10,15 @@ const logger = require('./config/logger');
 const swaggerDocs = require('./config/swagger');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const cors = require("cors");
+
+app.use(
+    cors({
+        origin: "http://localhost:3000", // Permite solicitudes desde este origen
+        methods: "GET,POST,PUT,DELETE", // Métodos HTTP permitidos
+        allowedHeaders: "Content-Type,Authorization", // Cabeceras permitidas
+    })
+);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 

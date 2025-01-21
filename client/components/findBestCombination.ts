@@ -1,4 +1,3 @@
-// components/findBestCombination.ts
 interface Product {
     id: number;
     name: string;
