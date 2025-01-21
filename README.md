@@ -11,12 +11,14 @@ El proyecto está dividido en dos partes principales:
 
 ### 🌍 Live Demo
 
-[🖌️ Frontend](https://api-y-carrito-de-compras.vercel.app/)
+#### Desplegado en Vercel
+
+## [🖌️ Frontend](https://api-y-carrito-de-compras.vercel.app/)
 ```
 https://api-y-carrito-de-compras.vercel.app/
 ```
 
-[🖥️ Backend](https://api-y-carrito-de-compras-bakj.vercel.app/api/products) 
+## [🖥️ Backend](https://api-y-carrito-de-compras-bakj.vercel.app/api/products) 
 ```
 https://api-y-carrito-de-compras-bakj.vercel.app/api/products
 ```
