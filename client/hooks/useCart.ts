@@ -1,7 +1,7 @@
-
 import { useState, useCallback } from "react";
 import api from "@/lib/api";
 import { Product } from "@/app/types/product";
+import { toast } from 'react-toastify';
 
 export const useCart = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -15,6 +15,7 @@ export const useCart = () => {
       setCartItems(response.data);
     } catch (error) {
       setError("Error fetching cart");
+      toast.error("Error fetching cart");
     } finally {
       setLoading(false);
     }

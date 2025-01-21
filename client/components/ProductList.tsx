@@ -1,4 +1,3 @@
-
 'use client'
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -7,13 +6,21 @@ import { useProducts } from "@/hooks/useProducts";
 import { useCart } from "@/hooks/useCart";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ErrorAlert } from "@/components/ErrorAlert";
+import { toast } from 'react-toastify';
 
 const ProductList = () => {
     const { products, loading, error } = useProducts();
-    const { addToCart } = useCart();
+    const { addToCart,fetchCart } = useCart();
 
     const handleAddToCart = async (productId: number) => {
-        await addToCart(productId);
+        try {
+            await addToCart(productId);
+            toast.success("Product added to cart successfully");
+            await fetchCart();
+        } catch (error) {
+            toast.error("Error adding product to cart");
+            console.error(error)
+        }
     };
 
     if (loading) return <LoadingSpinner />;
