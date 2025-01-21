@@ -1,21 +1,29 @@
-const cartService = require('../services/cartService');
-const { ERROR_MESSAGES, STATUS_CODES } = require('../config/constants');
 const { body, validationResult } = require('express-validator');
+const cartService = require('../services/cartService');
+const {  STATUS_CODES } = require('../config/constants');
+const logger = require('../config/logger');
 
-const addToCart = (req, res) => {
-    const { productId } = req.body;
+const addToCart = [
+    body('productId').isInt().withMessage('Product ID must be an integer'),
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            logger.warn('Validation errors', { errors: errors.array() });
+            return res.status(STATUS_CODES.BAD_REQUEST).json({ errors: errors.array() });
+        }
 
-    if (!productId) {
-        return res.status(STATUS_CODES.BAD_REQUEST).json({ error: ERROR_MESSAGES.PRODUCT_ID_REQUIRED });
-    }
+        const { productId } = req.body;
 
-    try {
-        const cart = cartService.addToCart(productId);
-        res.json({ message: 'Product added to cart', cart });
-    } catch (error) {
-        res.status(STATUS_CODES.NOT_FOUND).json({ error: error.message });
-    }
-};
+        try {
+            const cart = cartService.addToCart(productId);
+            logger.info('Product added to cart', { productId });
+            res.json({ message: 'Product added to cart', cart });
+        } catch (error) {
+            logger.error('Error adding product to cart', { error: error.message });
+            res.status(STATUS_CODES.NOT_FOUND).json({ error: error.message });
+        }
+    },
+];
 
 const getCart = (req, res) => {
     const cart = cartService.getCart();
