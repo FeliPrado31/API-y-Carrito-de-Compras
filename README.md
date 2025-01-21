@@ -9,7 +9,8 @@ El proyecto está dividido en dos partes principales:
 - **`client/`**: Aplicación frontend desarrollada con Next.js.
 - **`server/`**: API backend desarrollada con Express.js.
 
-### Live Demo
+### 🌍 Live Demo
+
 
 
 ### 📂 Estructura de Directorios
