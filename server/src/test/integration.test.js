@@ -3,7 +3,6 @@ const app = require('../app');
 
 describe('Integration Tests', () => {
     it('Debería agregar un producto al carrito y luego obtenerlo', async () => {
-        // Agregar un producto al carrito
         const addResponse = await request(app)
             .post('/cart')
             .send({ productId: 1 });
@@ -11,7 +10,6 @@ describe('Integration Tests', () => {
         expect(addResponse.status).toBe(200);
         expect(addResponse.body.message).toBe('Product added to cart');
 
-        // Obtener el carrito
         const getResponse = await request(app).get('/cart');
         expect(getResponse.status).toBe(200);
         expect(getResponse.body).toContainEqual({ id: 1, name: 'Producto 1', price: 100 });

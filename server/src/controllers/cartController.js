@@ -1,6 +1,6 @@
 const { body, validationResult } = require('express-validator');
 const cartService = require('../services/cartService');
-const {  STATUS_CODES } = require('../config/constants');
+const { STATUS_CODES } = require('../config/config');
 const logger = require('../config/logger');
 
 const addToCart = [
