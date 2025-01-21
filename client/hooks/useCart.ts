@@ -28,7 +28,7 @@ export const useCart = () => {
     setLoading(true);
     try {
       await api.post("/cart", { productId });
-      await fetchCart();
+      toast.success("Product added to cart");
     } catch (error) {
       setError("Error adding product to cart");
       toast.error("Error adding product to cart");
