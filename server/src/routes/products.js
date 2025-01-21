@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const productController = require('../controllers/productController');
 
-const products = require('../data/products.json');
-
-router.get('/', (req, res) => {
-    res.json(products);
-});
-
+router.get('/', productController.getProducts);
 
 module.exports = router;
