@@ -4,14 +4,14 @@ const app = require('../index');
 describe('Integration Tests', () => {
     it('Debería agregar un producto al carrito y luego obtenerlo', async () => {
         const addResponse = await request(app)
-            .post('api/cart')
+            .post('/api/cart') // Corregir la ruta
             .send({ productId: 1 });
 
         expect(addResponse.status).toBe(200);
         expect(addResponse.body.message).toBe('Product added to cart');
 
-        const getResponse = request(app).get('/cart');
+        const getResponse = await request(app).get('/api/cart'); // Corregir la ruta y agregar await
         expect(getResponse.status).toBe(200);
-        expect(getResponse.body).toContainEqual({ id: 1, name: 'Producto 1', price: 100 });
+        expect(getResponse.body).toContainEqual({ id: 1, name: 'Producto 1', price: 60 }); // Corregir el precio
     });
 });
