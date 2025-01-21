@@ -1,23 +1,35 @@
-
 import { useEffect } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { ErrorAlert } from '@/components/ErrorAlert';
+import { Button } from '@/components/ui/button'; // Importa el componente Button
 
 const Cart = () => {
     const { cartItems, fetchCart, loading, error } = useCart();
 
-
     useEffect(() => {
         fetchCart();
     }, [fetchCart]);
+
+    const handleRefreshCart = () => {
+        fetchCart();
+    };
 
     if (loading) return <LoadingSpinner />;
     if (error) return <ErrorAlert message={error} />;
 
     return (
         <div className="border border-gray-200 rounded-lg p-4 shadow-sm">
-            <h2 className="text-2xl font-bold mb-4">Carrito de Compras</h2>
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold">Carrito de Compras</h2>
+                <Button
+                    onClick={handleRefreshCart}
+                    variant="outline"
+                    size="sm"
+                >
+                    Actualizar
+                </Button>
+            </div>
             {cartItems.length === 0 ? (
                 <p className="text-gray-500">El carrito está vacío</p>
             ) : (

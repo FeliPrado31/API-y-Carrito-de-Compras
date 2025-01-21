@@ -31,7 +31,7 @@ const ProductList = () => {
                         </CardContent>
                         <CardFooter>
                             <Button
-                                onClick={() => handleAddToCart(product.id)} 
+                                onClick={() => handleAddToCart(product.id)}
                                 className="w-full"
                             >
                                 Agregar al carrito
