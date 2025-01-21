@@ -16,7 +16,7 @@ const addToCart = [
 
         try {
             const cart = cartService.addToCart(productId);
-            logger.info('Product added to cart', { productId });
+            logger.info('Product added to cart', { productId, timestamp: new Date() });
             res.json({ message: 'Product added to cart', cart });
         } catch (error) {
             logger.error('Error adding product to cart', { error: error.message });
