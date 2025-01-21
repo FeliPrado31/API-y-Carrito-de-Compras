@@ -1,16 +1,14 @@
+const cartRepository = require('../repositories/cartRepository');
 const products = require('../data/products.json');
-
-let cart = [];
 
 const addToCart = (productId) => {
     const product = products.find(p => p.id === productId);
     if (!product) throw new Error('Product not found');
-    cart.push(product);
-    return cart;
+    return cartRepository.addToCart(product);
 };
 
 const getCart = () => {
-    return cart;
+    return cartRepository.getCart();
 };
 
 module.exports = {
