@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { ErrorAlert } from '@/components/ErrorAlert';
-import { Button } from '@/components/ui/button'; // Importa el componente Button
+import { Button } from '@/components/ui/button';
 
 const Cart = () => {
     const { cartItems, fetchCart, loading, error } = useCart();

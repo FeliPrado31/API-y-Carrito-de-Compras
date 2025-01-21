@@ -14,9 +14,9 @@ const cors = require("cors");
 
 app.use(
     cors({
-        origin: "http://localhost:3000", // Permite solicitudes desde este origen
-        methods: "GET,POST,PUT,DELETE", // Métodos HTTP permitidos
-        allowedHeaders: "Content-Type,Authorization", // Cabeceras permitidas
+        origin: "http://localhost:3000",
+        methods: "GET,POST,PUT,DELETE",
+        allowedHeaders: "Content-Type,Authorization",
     })
 );
 
