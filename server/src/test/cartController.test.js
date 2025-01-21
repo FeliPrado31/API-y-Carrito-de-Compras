@@ -1,10 +1,10 @@
 const request = require('supertest');
-const app = require('../app');
+const app = require('../index');
 
 describe('Cart Controller', () => {
     it('Debería agregar un producto al carrito', async () => {
         const response = await request(app)
-            .post('/cart')
+            .post('api/cart')
             .send({ productId: 1 });
 
         expect(response.status).toBe(200);
@@ -14,7 +14,7 @@ describe('Cart Controller', () => {
 
     it('Debería devolver un error si el producto no existe', async () => {
         const response = await request(app)
-            .post('/cart')
+            .post('api/cart')
             .send({ productId: 999 });
 
         expect(response.status).toBe(404);

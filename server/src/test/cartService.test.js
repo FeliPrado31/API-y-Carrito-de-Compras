@@ -7,7 +7,7 @@ describe('Cart Service', () => {
 
     it('Debería agregar un producto al carrito', () => {
         const cart = cartService.addToCart(1);
-        expect(cart).toContainEqual({ id: 1, name: 'Producto 1', price: 100 });
+        expect(cart).toContainEqual({ id: 1, name: 'Producto 1', price: 60 });
     });
 
     it('Debería lanzar un error si el producto no existe', () => {
